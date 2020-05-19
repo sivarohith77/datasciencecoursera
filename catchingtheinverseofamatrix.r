@@ -2,42 +2,42 @@
 
 CacheMatrix <- function(x = matrix()) {
   
-  i<-NULL
+  j<-NULL
 
   set<-function(y)
   {
     x<<-y
-    i<<-NULL
+    j<<-NULL
   }
 
   get<-function()x
 
   setinverse<-function(inverse)i<<-inverse
 
-  getinverse<-function(inverse)i
+  getinverse<-function(inverse)j
   
-  list(set=set,get=get,setinverse=setinverse,getinverse=getinerse)
+  list(set=set,get=get,setinverse=setinverse,getinverse=getinverse)
   
 }
 
 cache <- function(x, ...)
   {
-i<-x$getinverse()
+j<-x$getinverse()
 
-if(!is.null(i)){
+if(!is.null(j)){
  
    message("cached data")
   
-  return(i)
+  return(j)
 }
 
 data<-x$get()
 
-i<-solve(data,...)
+j<-solve(data,...)
 
-x$setinverse(i)
+x$setinverse(j)
 
-i                
+j                
 }
 
 
